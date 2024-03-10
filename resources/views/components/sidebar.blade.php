@@ -18,6 +18,12 @@
                     <li class=''>
                         <a class="nav-link" href="{{ route('user.index') }}">User Manager</a>
                     </li>
+                    <li class=''>
+                        <a class="nav-link" href="{{ route('products.index') }}">Products</a>
+                    </li>
+                    <li class=''>
+                        <a class="nav-link" href="{{ route('categories.index') }}">Categories</a>
+                    </li>
                 </ul>
             </li>
 
