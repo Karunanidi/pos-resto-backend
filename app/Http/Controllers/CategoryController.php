@@ -81,7 +81,7 @@ class CategoryController extends Controller
         //validate request
         $request->validate([
             'name' => 'required',
-            'image' => 'nullable|image|mimes:png,jpg,jpeg,svg|max:2048'
+            'image' => 'nullable|image|mimes:png,jpg,jpeg,svg|max:2048' //fixed by adding 'nullable'
 
         ]);
 
