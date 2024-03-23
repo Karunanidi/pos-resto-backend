@@ -26,7 +26,7 @@ class OrderController extends Controller
             'id_kasir' => 'required',
             'nama_kasir' => 'required',
             'transaction_time' => 'required',
-            'order_items' => 'required',
+            // 'order_items' => 'required',
         ]);
 
         //create order
