@@ -30,7 +30,7 @@
 
 
                 <div class="card">
-                    <form method="POST" action="{{ route('categories.update', $category->id) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('categories.update', $categories->id) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="card-header">
@@ -155,7 +155,9 @@
             </div>
         </section>
     </div>
+
 @endsection
 
 @push('scripts')
+
 @endpush
