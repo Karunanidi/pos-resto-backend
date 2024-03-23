@@ -11,19 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // id INTEGER PRIMARY KEY AUTOINCREMENT,
-        // payment_amount INTEGER,
-        // sub_total INTEGER,
-        // tax INTEGER,
-        // discount INTEGER,
-        // service_charge INTEGER,
-        // total INTEGER,
-        // payment_method TEXT,
-        // total_item INTEGER,
-        // id_kasir INTEGER,
-        // nama_kasir TEXT,
-        // transaction_time TEXT,
-        // is_sync INTEGER DEFAULT 0
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->integer('payment_amount');
