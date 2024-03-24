@@ -3,23 +3,22 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
     //login api
     public function login(Request $request)
     {
-        Log::info('Login API endpoint hit');
-
+        //validate the request...
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
+        //check if the user exists
         $user = User::where('email', $request->email)->first();
         if (!$user) {
             return response()->json([
@@ -28,6 +27,7 @@ class AuthController extends Controller
             ], 404);
         }
 
+        //check if the password is correct
         if (!Hash::check($request->password, $user->password)) {
             return response()->json([
                 'status' => 'error',
@@ -35,7 +35,7 @@ class AuthController extends Controller
             ], 401);
         }
 
-        // Authentication successful, create a token
+        //generate token
         $token = $user->createToken('auth-token')->plainTextToken;
 
         return response()->json([
@@ -45,14 +45,14 @@ class AuthController extends Controller
         ], 200);
     }
 
-    //logout api
+    //logout
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();
 
         return response()->json([
             'status' => 'success',
-            'messages' => 'logged out'
+            'message' => 'Logged out'
         ], 200);
     }
 }

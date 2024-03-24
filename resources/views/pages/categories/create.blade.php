@@ -16,24 +16,23 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Category</h1>
+                <h1>Advanced Forms</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="{{ url('dashboard') }}">Dashboard</a></div>
+                    <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
                     <div class="breadcrumb-item"><a href="#">Forms</a></div>
                     <div class="breadcrumb-item">Category</div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Add New Category</h2>
-
+                <h2 class="section-title">Category</h2>
 
 
                 <div class="card">
                     <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="card-header">
-                            <h4>Input category details</h4>
+                            <h4>Input Category</h4>
                         </div>
                         <div class="card-body">
                             <div class="form-group">
@@ -64,9 +63,8 @@
                             </div>
 
 
-
                             <div class="form-group">
-                                <label class="form-label">Photo Product</label>
+                                <label class="form-label">Photo Category</label>
                                 <div class="col-sm-9">
                                     <input type="file" class="form-control" name="image"
                                         @error('image') is-invalid @enderror>
@@ -77,6 +75,9 @@
                                     </div>
                                 @enderror
                             </div>
+
+
+
                         </div>
                         <div class="card-footer text-right">
                             <button class="btn btn-primary">Submit</button>

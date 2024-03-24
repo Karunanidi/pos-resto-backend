@@ -3,11 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-
-use App\Models\Product;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,10 +16,10 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(20)->create();
 
         \App\Models\User::factory()->create([
-            'name'      =>  'FunWithBae',
-            'email'     =>  'fwb@fic14.com',
-            'password'  =>  Hash::make('12345678'),
-            'roles'      =>  'admin'
+            'name' => 'Test',
+            'email' => 'user@fic14.com',
+            'password' => Hash::make('12345678'),
+            'role' => 'admin',
         ]);
 
         $this->call([
@@ -31,6 +28,3 @@ class DatabaseSeeder extends Seeder
         ]);
     }
 }
-
-
-

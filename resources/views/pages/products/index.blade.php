@@ -17,8 +17,8 @@
                 </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Product</a></div>
-                    <div class="breadcrumb-item">All Product</div>
+                    <div class="breadcrumb-item"><a href="#">Products</a></div>
+                    <div class="breadcrumb-item">All Products</div>
                 </div>
             </div>
             <div class="section-body">
@@ -27,13 +27,16 @@
                         @include('layouts.alert')
                     </div>
                 </div>
+
+
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>All Product</h4>
+                                <h4>All Products</h4>
                             </div>
                             <div class="card-body">
+
                                 <div class="float-right">
                                     <form method="GET" action="{{ route('products.index') }}">
                                         <div class="input-group">
@@ -45,9 +48,9 @@
                                     </form>
                                 </div>
 
+                                <div class="clearfix mb-3"></div>
 
                                 <div class="table-responsive">
-                     <div class="clearfix mb-3"></div>
                                     <table class="table-striped table">
                                         <tr>
 
@@ -55,14 +58,13 @@
                                             <th>Category</th>
                                             <th>Price</th>
                                             <th>Status</th>
-                                            <th>Created At</th>
+                                            <th>Create At</th>
                                             <th>Action</th>
                                         </tr>
                                         @foreach ($products as $product)
                                             <tr>
 
-                                                <td>
-                                                    {{ $product->name }}
+                                                <td>{{ $product->name }}
                                                 </td>
                                                 <td>
                                                     {{ $product->category->name }}
@@ -71,11 +73,9 @@
                                                     {{ $product->price }}
                                                 </td>
                                                 <td>
-                                                    {{ $product->status == 1? 'Active' : 'Inactive' }}
+                                                    {{ $product->status == 1 ? 'Active' : 'Inactive' }}
                                                 </td>
-                                                <td>
-                                                    {{ $product->created_at }}
-                                                </td>
+                                                <td>{{ $product->created_at }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <a href='{{ route('products.edit', $product->id) }}'
@@ -84,8 +84,8 @@
                                                             Edit
                                                         </a>
 
-                                                        <form action="{{ route('products.destroy', $product->id) }}" method="POST"
-                                                            class="ml-2">
+                                                        <form action="{{ route('products.destroy', $product->id) }}"
+                                                            method="POST" class="ml-2">
                                                             <input type="hidden" name="_method" value="DELETE" />
                                                             <input type="hidden" name="_token"
                                                                 value="{{ csrf_token() }}" />
@@ -102,7 +102,7 @@
                                     </table>
                                 </div>
                                 <div class="float-right">
-                                    {{ $products ->withQueryString()->links() }}
+                                    {{ $products->withQueryString()->links() }}
                                 </div>
                             </div>
                         </div>

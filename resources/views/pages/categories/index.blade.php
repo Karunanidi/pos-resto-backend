@@ -27,13 +27,16 @@
                         @include('layouts.alert')
                     </div>
                 </div>
+
+
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>All Category</h4>
+                                <h4>All category</h4>
                             </div>
                             <div class="card-body">
+
                                 <div class="float-right">
                                     <form method="GET" action="{{ route('categories.index') }}">
                                         <div class="input-group">
@@ -45,24 +48,24 @@
                                     </form>
                                 </div>
 
+                                <div class="clearfix mb-3"></div>
 
                                 <div class="table-responsive">
-                     <div class="clearfix mb-3"></div>
                                     <table class="table-striped table">
                                         <tr>
 
                                             <th>Name</th>
-                                            <th>Created At</th>
+
+                                            <th>Create At</th>
                                             <th>Action</th>
                                         </tr>
                                         @foreach ($categories as $category)
                                             <tr>
 
-                                                <td>
-                                                    {{ $category->name }}
+                                                <td>{{ $category->name }}
                                                 </td>
-                                                <td>
-                                                    {{ $category->created_at }}</td>
+
+                                                <td>{{ $category->created_at }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <a href='{{ route('categories.edit', $category->id) }}'
@@ -71,8 +74,8 @@
                                                             Edit
                                                         </a>
 
-                                                        <form action="{{ route('categories.destroy', $category->id) }}" method="POST"
-                                                            class="ml-2">
+                                                        <form action="{{ route('categories.destroy', $category->id) }}"
+                                                            method="POST" class="ml-2">
                                                             <input type="hidden" name="_method" value="DELETE" />
                                                             <input type="hidden" name="_token"
                                                                 value="{{ csrf_token() }}" />
@@ -89,7 +92,7 @@
                                     </table>
                                 </div>
                                 <div class="float-right">
-                                    {{ $categories ->withQueryString()->links() }}
+                                    {{ $categories->withQueryString()->links() }}
                                 </div>
                             </div>
                         </div>

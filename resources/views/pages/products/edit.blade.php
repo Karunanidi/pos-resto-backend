@@ -16,25 +16,25 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Product</h1>
+                <h1>Advanced Forms</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
                     <div class="breadcrumb-item"><a href="#">Forms</a></div>
-                    <div class="breadcrumb-item">Product</div>
+                    <div class="breadcrumb-item">Products</div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Edit Product</h2>
+                <h2 class="section-title">Products</h2>
 
 
 
                 <div class="card">
-                    <form method="POST" action="{{ route('categories.update', $categories->id) }}" enctype="multipart/form-data">
+                    <form action="{{ route('products.update', $product) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="card-header">
-                            <h4>Input Product Details</h4>
+                            <h4>Input Product</h4>
                         </div>
                         <div class="card-body">
                             <div class="form-group">
@@ -89,10 +89,13 @@
                                     </div>
                                 @enderror
                             </div>
-
                             <div class="form-group">
                                 <label class="form-label">Category</label>
-                                <select class="form-control selectric @error('category_id') is-invalid @enderror" name="category_id">
+                                <select
+                                    class="form-control selectric @error('category_id')
+                                    is-invalid
+                                @enderror"
+                                    name="category_id">
                                     <option value="">Choose Category</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}"
@@ -101,50 +104,49 @@
                                         </option>
                                     @endforeach
                                 </select>
-                                @error('category_id')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+
                             </div>
 
                             <div class="form-group mb-0">
                                 <label class="form-label w-100">Status</label>
                                 <div class="selectgroup selectgroup-pills">
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="status" value="1"
-                                               class="selectgroup-input" {{ $product->status == 1 ? 'checked' : '' }}>
+                                        <input type="radio" name="status" value="1" class="selectgroup-input"
+                                            {{ $product->status == 1 ? 'checked' : '' }}>
                                         <span class="selectgroup-button">Active</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="status" value="0"
-                                               class="selectgroup-input" {{ $product->status == 0 ? 'checked' : '' }}>
+                                        <input type="radio" name="status" value="0" class="selectgroup-input"
+                                            {{ $product->status == 0 ? 'checked' : '' }}>
                                         <span class="selectgroup-button">Inactive</span>
                                     </label>
                                 </div>
                             </div>
 
-                            <div class="form-group"></div>
-                            <label class="form-label">Photo Product</label>
-                            <div class="col-sm-9">
-                                <input type="file" class="form-control" name="image"
-                                    @error('image') is-invalid @enderror>
+                            <div class="form-group">
+                                <label class="form-label mt-4">Photo Product</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control" name="image"
+                                        @error('image') is-invalid @enderror>
+                                </div>
                             </div>
 
+                            {{-- is favorite --}}
                             <div class="form-group mt-4">
                                 <label class="form-label w-100">Is Favorite</label>
                                 <div class="selectgroup selectgroup-pills">
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="is_favorite" value="1"
-                                               class="selectgroup-input" {{ $product->is_favorite == 1 ? 'checked' : '' }}>
+                                        <input type="radio" name="is_favorite" value="1" class="selectgroup-input"
+                                            {{ $product->is_favorite == 1 ? 'checked' : '' }}>
                                         <span class="selectgroup-button">Yes</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="is_favorite" value="0"
-                                               class="selectgroup-input" {{ $product->is_favorite == 0 ? 'checked' : '' }}>
+                                        <input type="radio" name="is_favorite" value="0" class="selectgroup-input"
+                                            {{ $product->is_favorite == 0 ? 'checked' : '' }}>
                                         <span class="selectgroup-button">No</span>
                                     </label>
                                 </div>
                             </div>
-
                         </div>
                         <div class="card-footer text-right">
                             <button class="btn btn-primary">Submit</button>
@@ -155,9 +157,7 @@
             </div>
         </section>
     </div>
-
 @endsection
 
 @push('scripts')
-
 @endpush
